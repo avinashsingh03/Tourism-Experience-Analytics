@@ -7,11 +7,11 @@ import joblib
 # -------------------------------
 @st.cache_resource
 def load_models():
-    rating_model = joblib.load("rating_regression_model.pkl")
-    visit_mode_model = joblib.load("visit_mode_baseline_model.pkl")
-    user_item_matrix = joblib.load("user_item_matrix.pkl")
-    top_k_similar_users = joblib.load("top_k_user_similarity.pkl")
-    attraction_map = joblib.load("attraction_map.pkl")
+    rating_model = joblib.load("models/rating_regression_model.pkl")
+    visit_mode_model = joblib.load("models/visit_mode_baseline_model.pkl")
+    user_item_matrix = joblib.load("models/user_item_matrix.pkl")
+    top_k_similar_users = joblib.load("models/top_k_user_similarity.pkl")
+    attraction_map = joblib.load("models/attraction_map.pkl")
     return rating_model, visit_mode_model, user_item_matrix, top_k_similar_users, attraction_map
 
 
@@ -229,4 +229,5 @@ with tab3:
         st.subheader("Top Recommended Attractions")
         for i, (name, score) in enumerate(readable_recommendations(recs), start=1):
             st.write(f"**{i}. {name}** — Preference Score: {round(score, 2)}")
+
 
